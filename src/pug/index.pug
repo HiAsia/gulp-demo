@@ -4,6 +4,7 @@ head
   meta(charset="utf-8")
   title first file of pug
   link(rel="stylesheet", href="../css/index.css")
+  script(src="../js/index.js")
   
 body
   h1 This is my first pug
@@ -11,7 +12,7 @@ body
     p.p1 p1test
     p that some content in here
       i point
-  - var friends = 10
+  -var friends = 10
   case friends
     when 0
       p you have no friends

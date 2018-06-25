@@ -6,7 +6,10 @@ const gulp = require('gulp'),
       babel = require('gulp-babel'),
       browserSync = require("browser-sync"),
       plumber = require('gulp-plumber'),
-      notify = require('gulp-notify');
+      notify = require('gulp-notify'),
+      imagemin  = require('gulp-imagemin'),
+      cache = require('gulp-cache'),
+      pngquant = require('gulp-pngquant');
 
 
 const paths = {
@@ -62,13 +65,20 @@ gulp.task('sass', () => {
 
 gulp.task('js', () => {
   return gulp.src(paths.js.src)
-    .pipe(babel())
+    .pipe(babel({
+      presets: ['env']
+    }))
     .pipe(gulp.dest(paths.js.dest))
 })
 
 gulp.task('img', () => {
-  return gulp.src(paths.iamges.src)
-    .pipe(gulp.dest(paths.iamges.dest))
+  return gulp.src(paths.images.src)
+    .pipe(cache(imagemin({
+      progressive: true,
+      svgoPlugins: [{removeViewBox: false}],
+      use: [pngquant()]
+    })))
+    .pipe(gulp.dest(paths.images.dest))
 })
 
 gulp.task('watch', () => {
