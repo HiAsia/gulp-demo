@@ -1,0 +1,21 @@
+doctype html
+
+head
+  meta(charset="utf-8")
+  title first file of pug
+  link(rel="stylesheet", href="../css/index.css")
+  
+body
+  h1 This is my first pug
+  div.box(data-url="hello wrold", title="ceshi")
+    p.p1 p1test
+    p that some content in here
+      i point
+  - var friends = 10
+  case friends
+    when 0
+      p you have no friends
+    when 1
+      p you have a friend
+    default
+      p you have #{friends} friends
