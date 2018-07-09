@@ -7,8 +7,8 @@ const gulp = require('gulp'),
       browserSync = require("browser-sync"),
       plumber = require('gulp-plumber'),
       notify = require('gulp-notify'),
-      imagemin  = require('gulp-imagemin'),
       cache = require('gulp-cache'),
+      imagemin  = require('gulp-imagemin'),
       pngquant = require('gulp-pngquant');
 
 
@@ -21,7 +21,7 @@ const paths = {
   sass: {
     src: 'src/sass/**/*.scss',
     dest: 'dev/css/',
-    watch: 'src/sass/**/*.scss'
+    watch: ['src/sass/**/*.scss', 'src/private/sass/**/*.scss']
   },
   js: {
     src: 'src/js/**/*.js',
@@ -66,7 +66,8 @@ gulp.task('sass', () => {
 gulp.task('js', () => {
   return gulp.src(paths.js.src)
     .pipe(babel({
-      presets: ['env']
+      presets: ['es2015'],
+      plugins: "transform-es2015-modules-umd"
     }))
     .pipe(gulp.dest(paths.js.dest))
 })

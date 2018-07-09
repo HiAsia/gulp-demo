@@ -1,4 +1,16 @@
-console.log(222)
-const str = "kime";
+var obj = {
+	name: 'asa',
+	age: 18,
+	gender: "man"
+};
 
-console.log(str);
+var name = obj.name,
+    age = obj.age,
+    gender = obj.gender;
+
+
+var sayHello = function sayHello() {
+	return alert("hello " + name);
+};
+
+console.log(name, age, gender);

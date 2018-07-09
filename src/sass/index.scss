@@ -1,4 +1,14 @@
-$basic-color: #ccc;
+$basic-color: red;
+
+@mixin onerow ($w: auto){
+	width: $w;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
 .p1{
   color: $basic-color;
+  @include onerow()
 }
+
+@import "./../private/sass/private-index.scss";

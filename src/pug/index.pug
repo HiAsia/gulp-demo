@@ -9,7 +9,7 @@ head
 body
   h1 This is my first pug
   div.box(data-url="hello wrold", title="ceshi")
-    p.p1 p1test
+    p.p1 p1test hello wrold
     p that some content in here
       i point
   -var friends = 10
@@ -20,3 +20,6 @@ body
       p you have a friend
     default
       p you have #{friends} friends
+
+  button(onclick="sayHello()") click me
+  img(src="../images/test.png")
